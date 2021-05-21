@@ -1,0 +1,25 @@
+:root {
+  --baseColor:  #276678;
+--hoverColor: #1687a7;
+--bgcolor1: #d3e0ea;
+--bgcolor2: #f6f5f5;
+}
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
+
+
+.correct-answer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-container {
+  width: 80vw;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  background-color: red;
+}
