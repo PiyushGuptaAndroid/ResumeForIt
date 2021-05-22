@@ -1,4 +1,9 @@
-* {
+:root {
+  --baseColor:  #276678;
+--hoverColor: #1687a7;
+--bgcolor1: #d3e0ea;
+--bgcolor2: #f6f5f5;
+}* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -12,7 +17,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #341f97;
+    background-color: var(--baseColor);
   }
   
   .welcome_text {
@@ -46,7 +51,7 @@
     border: none;
     border-radius: 100px;
     background-color: #fff;
-    color: #341f97;
+    color: var(--baseColor);
     font-size: 22px;
     transition: 0.4s all;
   }
@@ -92,11 +97,11 @@
     justify-content: center;
     height: 100%;
     width: 100px;
-    background-color: #341f97;
+    background-color: var(--baseColor);
     color: #fff;
   }
   .quiz_body {
-    background-color: #ecf0f1;
+    background-color: var(--bgcolor2);
   }
   
   .option_group {
@@ -118,17 +123,17 @@
   .option:hover {
     cursor: pointer;
     /* background-color: rgba(255, 255, 255, 0.1); */
-    border: 2px solid #341f97;
-    color: #341f97;
+    border: 2px solid var(--baseColor);
+    color: var(--baseColor);
   }
   .option.active {
-    background-color: #341f97;
+    background-color: var(--baseColor);
     color: #fff;
   }
   .btn-next {
     border: none;
     padding: 15px 35px;
-    background-color: #341f97;
+    background-color: var(--baseColor);
     color: #fff;
     border-radius: 27px;
     transition: 0.4s all;
@@ -137,7 +142,7 @@
   .btn-next:hover {
     cursor: pointer;
     background-color: #fff;
-    color: #341f97;
+    color: var(--baseColor);
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
   }
   

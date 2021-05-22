@@ -12,3 +12,6 @@ def quiz(request):
 def endquiz(request):
     return render(request, 'studentPortal/quiz/end.html')
 
+def studentDashboard(request):
+    return render(request, 'studentPortal/studentDashboard.html')
+
