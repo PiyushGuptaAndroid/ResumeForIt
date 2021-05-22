@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% extends 'adminPortal/baseAdmin.html' %}
+{% load static %}
+
+{% block header_block %}
+    <link rel="stylesheet" href="{% static 'css/adminPortal/addQuestions.css' %}"  >
+{% endblock %}
+
+    {% block body_block %}
+    <form class="form-container border rounded-3 border-info p-3 m-5" method="POST">
+      <div
+        class="section row g-2 border rounded-3 border-3 border-primary p-2 m-2"
+      >
+        <div class="form-floating question col-12">
+          <textarea
+            class="form-control"
+            placeholder="Question"
+            id="floatingTextarea2"
+            style="height: 100px"
+          ></textarea>
+          <label for="floatingTextarea2">Question</label>
+        </div>
+
+        <div class="form-floating option A col-6">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Option A"
+          />
+          <label for="floatingInput">Option A</label>
+        </div>
+        <div class="form-floating option B col-6">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Option A"
+          />
+          <label for="floatingInput">Option B</label>
+        </div>
+
+        <div class="form-floating option C col-6">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Option A"
+          />
+          <label for="floatingInput">Option C</label>
+        </div>
+        <div class="form-floating option D col-6">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Option A"
+          />
+          <label for="floatingInput">Option D</label>
+        </div>
+
+        <div class="col-12">
+          <div class="form-control correct-answer">
+            <label for="floatingTextarea2">Correct Answer</label>
+            <div class="radio-group">
+              <div class="form-check form-check-inline mx-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio1"
+                  value="option1"
+                />
+                <label class="form-check-label" for="inlineRadio1">A</label>
+              </div>
+              <div class="form-check form-check-inline mx-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio2"
+                  value="option2"
+                />
+                <label class="form-check-label" for="inlineRadio2">B</label>
+              </div>
+              <div class="form-check form-check-inline mx-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio3"
+                  value="option3"
+                />
+                <label class="form-check-label" for="inlineRadio3">C </label>
+              </div>
+              <div class="form-check form-check-inline mx-4">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="inlineRadioOptions"
+                  id="inlineRadio4"
+                  value="option4"
+                />
+                <label class="form-check-label" for="inlineRadio4">D </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <select class="form-select col-6" aria-label="Default select example">
+            <option selected>Tags</option>
+            <option value="1">C++</option>
+            <option value="2">Java</option>
+            <option value="3">React</option>
+            <option value="4">Machine Learning</option>
+            <option value="3">AI</option>
+            <option value="3">Communication</option>
+          </select>
+        </div>
+      </div>
+      <div class="bottom-section">
+        <button type="submit" class="btn btn-primary m-2">Submit</button>
+        <div class="add-button">
+          <i
+            class="bi bi-plus-circle"
+            style="font-size: 2.5rem; color: cornflowerblue"
+          ></i>
+        </div>
+      </div>
+    </form>
+
+    {% endblock %}
+
+ 
