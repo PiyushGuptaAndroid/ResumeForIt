@@ -21,5 +21,6 @@ from helloWorld import views
 urlpatterns = [
     path('hello', views.index, name='index'),
     path('', include('adminPortal.urls'), name='index'),
+    path('', include('studentPortal.urls'), name='index'),
     path('admin/', admin.site.urls),
 ]

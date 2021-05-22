@@ -6,7 +6,14 @@ def loggedInAsAdmin(request):
         return render(request, 'adminPortal/baseAdmin.html')
 
 def addQuestions(request):
-        return render(request, 'adminPortal/addQuestions.html')
+        print(request.method)
+        if(request.method == "GET"):
+                print("get method")
+                return render(request, 'adminPortal/addQuestions.html')
+        if(request.method == "POST"):
+                print("post method")
+                print(request.POST)     
+                return render(request, 'adminPortal/addQuestions.html')   
 
 def adminDashboard(request):
         return render(request, 'adminPortal/adminDashboard.html')
