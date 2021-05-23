@@ -1,0 +1,9 @@
+.image {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100vw - 4rem);
+  height: 60vh;
+  top: 19vh;
+  left: 1rem;
+}

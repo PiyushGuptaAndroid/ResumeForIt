@@ -1,53 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/studentPortal/baseStudent.css' %}">    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/studentPortal/baseStudent.css' %}"
+    />
 
     {% block header_block %}
-       <!-- css file link -->
+    <!-- css file link -->
     {% endblock %}
     <title>Student Portal</title>
   </head>
   <body>
-    <nav class="navbar navbar-light">
+    <div class="container-fluid web-page">
+      <nav class="navbar navbar-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            ResumeFilter
-          </a>
-          <div>
-          <a href="#">
-            My Profile
-          </a>
-          <a href="#">
-            Analysis
-          </a>
-          <a href="#">
-            Logout
-          </a>
+          <a class="navbar-brand" href="#"> ResumeFilter </a>
+          <div class="nav-right">
+            <a href="#"> HOME </a>
+
+            <a href="#"> MY PROFILE </a>
+            <a href="#"> ANALYSIS </a>
+            <a href="#"> LOGOUT </a>
+            <img class = "robot" src= "{% static 'images/robot.png' %}"
           </div>
-    </div>
+        </div>
       </nav>
       <div class="contatiner-fluid page-content">
-            <div class="contatiner-fluid router-content">
-                    {% block body_block %}
-                    main content
-                    {% endblock %}
-          </div>
+        {% block body_block %} main content {% endblock %}
       </div>
-
-     
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

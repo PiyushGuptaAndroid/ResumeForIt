@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-{% extends 'studentPortal/baseStudent.html' %}
-{% load static %}
+<!DOCTYPE html> {% extends 'studentPortal/baseStudent.html' %} {% load static %}
 {% block header_block %}
-<link rel="stylesheet" href="{% static 'css/studentPortal/studentDashboard.css' %}">    
-{% endblock %}
-    
-
-      {% block body_block %}
-   <h1>student Dashboard</h1>
-
-    {% endblock %}
-
- 
+<link
+  rel="stylesheet"
+  href="{% static 'css/studentPortal/studentDashboard.css' %}"
+/>
+{% endblock %} {% block body_block %}
+<h1>student Dashboard</h1>
+<div class="image">
+  <img class= "leaf" src = {% static 'images/leaf.png' %} > <img class = "amico"
+  src = {% static 'images/amico_image.png' %}> {% endblock %}
+</div>
