@@ -1,11 +1,10 @@
 :root {
-  --baseColor:  #276678;
---hoverColor: #1687a7;
---bgcolor1: #d3e0ea;
---bgcolor2: #f6f5f5;
+  --baseColor: #002542;
+  --bgcolor1: #ffc3bd;
+  --bgcolor2: #eeeeee;
+  --hoverColor: #4a8abb;
 }
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
-
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 
 .correct-answer {
   display: flex;
@@ -21,11 +20,11 @@
   justify-content: space-between;
 }
 .btn-primary {
-  border-color: var(--baseColor) ;
+  border-color: var(--baseColor);
   background-color: var(--baseColor);
 }
 .btn-primary:hover {
-  border-color: var(--hoverColor) ;
+  border-color: var(--hoverColor);
   background-color: var(--hoverColor);
 }
 .border-primary {
@@ -49,22 +48,22 @@
   /* margin: 3rem!important; */
 }
 .form-check-input:checked {
-  background-color:  var(--baseColor);
-  border-color:  var(--baseColor);
+  background-color: var(--baseColor);
+  border-color: var(--baseColor);
 }
 
-.form-control, .form-select {
- 
+.form-control,
+.form-select {
   color: #2d3135a9;
   background-color: #f6f5f536;
   background-clip: padding-box;
   border: none;
-  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
-label, .form-select  {
+label,
+.form-select {
   font-size: 0.9rem;
   color: #2d3135cc;
-
 }

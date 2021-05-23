@@ -1,67 +1,67 @@
 :root {
-    --baseColor:  #276678;
---hoverColor: #1687a7;
---bgcolor1: #d3e0ea;
---bgcolor2: #f6f5f5;
+  --baseColor: #002542;
+  --bgcolor1: #ffc3bd;
+  --bgcolor2: #eeeeee;
+  --hoverColor: #4a8abb;
 }
 * {
-    font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .navbar {
-    background-color: var(--baseColor);
-    box-shadow: 0px 15px 8px -15px rgb(70, 69, 69);    
-
+  background-color: var(--baseColor);
+  box-shadow: 0px 15px 8px -15px rgb(70, 69, 69);
 }
-.navbar-light{
-    padding: 0.45rem 0;
+.navbar-light {
+  padding: 0.45rem 0;
 }
 .navbar .container-fluid {
-    margin:  0 2rem;
-    }
+  margin: 0 2rem;
+}
 
 .navbar-light .navbar-brand {
-    color: white;
+  color: white;
 }
 .navbar a {
-    text-decoration: none;
-    color: white;
-    padding: 0;
+  text-decoration: none;
+  color: white;
+  padding: 0;
 }
-.page-content  {
-    height: 90vh;
-    background-color: var(--bgcolor2);
+.page-content {
+  height: 90vh;
+  background-color: white;
 }
 .router-content {
-    height: 90vh;
-    overflow: scroll;
+  height: 90vh;
+  overflow: scroll;
 }
 .sidebar {
-    background-color: var(--bgcolor1);
-    height: 90vh;
+  background-color: var(--bgcolor2);
+  height: 90vh;
 }
 .sidebar a {
-    margin-left: 0.5rem;
-    padding: 1rem;
-    background-color: var(--bgcolor1);
-    border: none;
-    text-decoration: none;
-    color: rgb(44, 43, 43);
+  margin-left: 0.5rem;
+  padding: 1rem;
+  background-color: var(--bgcolor2);
+  border: none;
+  text-decoration: none;
+  color: rgb(44, 43, 43);
 }
 
 .sidebar a:hover {
-    background-color: var(--hoverColor);
-    cursor: pointer;
+  background-color: var(--hoverColor);
+  cursor: pointer;
 }
 .col-2 {
-    padding: 0;
+  padding: 0;
 }
-.col-10{
-    padding: 0;
+.col-10 {
+  padding: 0;
 }
 .list-group {
-margin-top: 4rem;
-width: 100%;
+  margin-top: 4rem;
+  width: 100%;
 }
 
-
-
+::-webkit-scrollbar {
+  display: none;
+}
