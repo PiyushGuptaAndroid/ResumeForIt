@@ -1,9 +1,11 @@
 :root {
-  --primary-color: #002542;
-  --secondary-color: #ffc3bd;
+  --baseColor: #002542;
+  --bgcolor1: #ffc3bd;
+  --bgcolor2: #eeeeee;
+  --hoverColor: #4a8abb;
 }
 .web-page {
-  background-color: var(--primary-color);
+  background-color: var(--baseColor);
   height: 100vh;
   width: 100vw;
   position: absolute;
@@ -25,7 +27,7 @@
 }
 
 .navbar-light .navbar-brand {
-  color: var(--secondary-color);
+  color: var(--bgcolor1);
 }
 .navbar-light .navbar-brand:hover {
   color: white;

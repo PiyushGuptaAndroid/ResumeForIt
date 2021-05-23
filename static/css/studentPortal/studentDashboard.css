@@ -1,6 +1,8 @@
 :root {
-  --primary-color: #002542;
-  --secondary-color: #ffc3bd;
+  --baseColor: #002542;
+  --bgcolor1: #ffc3bd;
+  --bgcolor2: #eeeeee;
+  --hoverColor: #4a8abb;
 }
 .image {
   position: absolute;
@@ -37,7 +39,7 @@
   border-radius: 1rem !important;
 }
 .accordion-button:not(.collapsed) {
-  color: var(--primary-color);
+  color: var(--baseColor);
   background-color: white;
   box-shadow: 0px 1px 4px rgba(0, 161, 207, 0.41);
 }
