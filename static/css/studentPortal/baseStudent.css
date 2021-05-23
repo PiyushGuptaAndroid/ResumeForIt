@@ -1,0 +1,37 @@
+:root {
+    --baseColor:  #276678;
+--hoverColor: #1687a7;
+--bgcolor1: #d3e0ea;
+--bgcolor2: #f6f5f5;
+}
+.navbar {
+border-bottom: rgb(122, 120, 120);    
+
+}
+.navbar-light{
+    padding: 0.45rem 0;
+}
+.navbar .container-fluid {
+    margin:  0 2rem;
+    }
+
+.navbar-light .navbar-brand {
+    color: black;
+}
+.navbar a {
+    text-decoration: none;
+    color: black;
+    padding: 0;
+}
+.page-content  {
+    height: 90vh;
+    background-color: var(--bgcolor2);
+}
+.router-content {
+    height: 90vh;
+    overflow: scroll;
+}
+
+
+
+
