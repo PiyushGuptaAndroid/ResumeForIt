@@ -20,12 +20,14 @@
   justify-content: space-between;
 }
 .btn-primary {
-  border-color: var(--baseColor);
-  background-color: var(--baseColor);
+  color: var(--baseColor);
+  background: linear-gradient(256.01deg, #ffd5d1 20.88%, #8be5ff 100.05%);
+  border: none;
+  border-radius: 6px;
 }
 .btn-primary:hover {
-  border-color: var(--hoverColor);
-  background-color: var(--hoverColor);
+  color: var(--hoverColor);
+  border: 2px solid var(--hoverColor);
 }
 .border-primary {
   border: none;
