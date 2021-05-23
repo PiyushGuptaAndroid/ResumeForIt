@@ -9,9 +9,12 @@
   display: flex;
   justify-content: space-between;
   width: calc(100vw - 4rem);
-  height: 60vh;
-  top: 28vh;
+  height: 70vh;
+  top: 18vh;
   left: 1rem;
+}
+.amico {
+  width: 40vw;
 }
 .accordion {
   position: absolute;
