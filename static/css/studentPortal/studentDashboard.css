@@ -49,8 +49,12 @@
 .start-quiz-btn {
   width: 6rem;
   height: 2rem;
-
+  color: var(--baseColor);
   background: linear-gradient(256.01deg, #ffd5d1 20.88%, #8be5ff 100.05%);
   border: none;
   border-radius: 6px;
+}
+.start-quiz-btn:hover {
+  color: var(--hoverColor);
+  border: 2px solid var(--hoverColor);
 }

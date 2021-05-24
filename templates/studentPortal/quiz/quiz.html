@@ -38,8 +38,12 @@
       </div>
     </div>
 
+<script>
+ var questionsData = JSON.parse("{{ questionsData|escapejs }}");
+  console.log(questionsData)
+  </script> 
     <!-- site.js -->
-        <script src="{% static 'js/studentPortal/quiz/site.js' %}"></script>
+        <script src="{% static 'js/studentPortal/quiz/site.js' %}" ></script>
 
       <!-- user info -->
         <script src="{% static 'js/studentPortal/quiz/userInfo.js' %}"></script>
