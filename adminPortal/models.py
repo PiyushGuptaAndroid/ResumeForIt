@@ -9,5 +9,5 @@ class Question(models.Model):
     optionB = models.TextField()
     optionC = models.TextField()
     optionD = models.TextField()
-    correctOption = models.CharField(max_length=1)
+    correctOption = models.TextField()
     tag = models.TextField()
