@@ -6,4 +6,5 @@ urlpatterns = [
     path('quiz', views.quiz, name='index'),
     path('endquiz', views.endquiz, name='index'),
     path('loggedInAsStudent', views.studentDashboard, name='index'),
+    path('studentRegistration', views.studentRegistration, name='index'),
 ]
