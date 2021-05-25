@@ -24,3 +24,9 @@ def endquiz(request):
 
 def studentDashboard(request):
     return render(request, 'studentPortal/studentDashboard.html')
+
+
+def studentRegistration(request):
+    if(request.method == "POST"):
+        print(request.POST)
+    return render(request, 'studentPortal/studentRegistration.html')

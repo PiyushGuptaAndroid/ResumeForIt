@@ -1,0 +1,166 @@
+<!DOCTYPE html> {% extends 'studentPortal/baseStudent.html' %} {% load static %}
+{% block header_block %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/studentPortal/studentRegistration.css' %}"
+/>
+{% endblock %} {% block body_block %}
+<div class="container-fluid register-block">
+  <form class="row needs-validation" novalidate method = "POST" action = "/studentRegistration">
+    {% csrf_token %}
+  <div class="mb-3 col-6">
+      <label for="NmaeInput" class="form-label">Name</label>
+      <input type = "text" class="form-control" id="NmaeInput" placeholder="Name" name="name" required></input>
+    </div>
+    <div class="mb-3 col-6">
+      <label for="EmailAddressInput" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="EmailAddressInput"
+        placeholder="name@example.com"
+        name="email"
+        required
+      />
+      <div class="invalid-feedback">Incorrect email address</div>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="BirthdayInput" class="form-label">Date Of Birth</label>
+      <input type="date" id="BirthdayInput" class="form-control" name="DOB" 
+        required>
+      <div class="invalid-feedback">Date of birth is Required</div>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="PhoneInput" class="form-label">Phone No. </label>
+      <input type="tel" id="PhoneInput" class="form-control" name="phone" placeholder="Phone"
+        required>
+      <div class="invalid-feedback">Phone No. is required</div>
+    </div>
+
+    {% comment %} Address {% endcomment %}
+
+    <label for="Adrress" class="form-label"><b>Address:</b></label>
+    <div class="mb-3 col-12">
+          <label for="StreetAddressInput" class="form-label">Street Address</label>
+          <input type="text" id="StreetAddressInput" class="form-control" name="StreetAddress" placeholder="StreetAddress"
+            required>
+          <div class="invalid-feedback">Street Address is Required</div>
+    </div>
+
+        <div class="mb-3 col-3">
+          <label for="cityInput" class="form-label">City</label>
+          <input type="text" id="cityInput" class="form-control" name="city" placeholder="city"
+            required>
+          <div class="invalid-feedback">City is Required</div>
+        </div>
+
+        <div class="mb-3 col-3">
+          <label for="stateInput" class="form-label">State</label>
+          <input type="text" id="stateInput" class="form-control" name="state" placeholder="state"
+            required>
+          <div class="invalid-feedback">State is Required</div>
+        </div>
+
+        <div class="mb-3 col-3">
+          <label for="countryInput" class="form-label">country</label>
+          <input type="text" id="countryInput" class="form-control" name="country" placeholder="country"
+            required>
+          <div class="invalid-feedback">Country is Required</div>
+        </div>
+        <div class="mb-3 col-3">
+          <label for="pincodeInput" class="form-label">Pincode</label>
+          <input type="text" id="pincodeInput" class="form-control" name="pincode" placeholder="pincode"
+            required>
+          <div class="invalid-feedback">Pincode is Required</div>
+        </div>
+
+{% comment %} Qualifications {% endcomment %}
+    
+    <label for="qualifications" class="form-label"><b>Qualifications:</b> </label>
+    <label for="highestDegreeCompleted" class="form-label">Highest Degree Completed: </label>
+    <div class="mb-3 col-12">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="highestDegree"
+          id="bachelors"
+          value = "Bachelors"
+          checked
+        />
+        <label class="form-check-label" for="bachelors"> Bachelors </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="highestDegree"
+          id="masters"          
+          value = "Masters"
+        />
+        <label class="form-check-label" for="masters"> Masters </label>
+      </div>
+    </div>
+
+    <div class="mb-3 col-2">
+      <label for="yearOfDegreeCompletedInput" class="form-label">Year (passout)</label>
+          <input type="text" id="yearOfDegreeCompletedInput" class="form-control" name="yearOfDegreeCompleted" placeholder="year"
+            required>
+          <div class="invalid-feedback">Year is Required</div>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="institutionInput" class="form-label">Institution </label>
+          <input type="text" id="institutionInput" class="form-control" name="institution" placeholder="institution"
+            required>
+          <div class="invalid-feedback">Institution is Required</div>
+    </div>
+
+    <div class="mb-3 col-4">
+      <label for="specificationInput" class="form-label">Specification </label>
+          <input type="text" id="specificationInput" class="form-control" name="specification" placeholder="specification"
+            required>
+          <div class="invalid-feedback">Specification is Required</div>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-danger" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %} {% block script_block%}
+<!-- Optional JavaScript -->
+<!-- Popper.js first, then Bootstrap JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+  integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  var forms = document.querySelectorAll(".needs-validation");
+
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,35 @@
+:root {
+    --baseColor: #002542;
+    --bgcolor1: #ffc3bd;
+    --bgcolor2: #eeeeee;
+    --hoverColor: #4a8abb;
+}
+
+form {
+
+    width: 60vw;
+}
+
+.register-block {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.form-control {
+    padding: 0.5rem;
+    height: 1.7rem;
+    font-size: small;
+}
+
+label{
+    font-size: small;
+    color: rgb(112, 112, 112);
+}
+y
+.rows{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
