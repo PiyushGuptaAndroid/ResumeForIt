@@ -29,7 +29,6 @@ def addQuestions(request):
 
 def adminDashboard(request):
     tags = Question.objects.values('tag').distinct()
-    print(tags)
     return render(request, 'adminPortal/adminDashboard.html', {'tags': tags})
 
 
@@ -41,7 +40,23 @@ def registerAdmins(request):
     return render(request, 'adminPortal/registerAdmins.html')
 
 def questions(request, tag):
-    print(tag)
     ques_dict = Question.objects.filter(tag = tag )
-    print(ques_dict)
     return render(request, 'adminPortal/questions.html', {'ques_dict' : ques_dict})
+
+
+def editQuestion(request, qid):
+    if(request.method == "GET"):
+        question_details = Question.objects.get(id = qid)
+        return render(request, 'adminPortal/editQuestions.html', {'ques_details' : question_details})
+    if(request.method == "POST"):
+        question = request.POST['question']
+        optionA = request.POST['optionA']
+        optionB = request.POST['optionB']
+        optionC = request.POST['optionC']
+        optionD = request.POST['optionD']
+        correctOption = request.POST['correctOption']
+        tag = request.POST['tag']
+        Question.objects.filter(id = qid).update(question = question, optionA=optionA, optionB=optionB,
+                        optionC=optionC, optionD=optionD, correctOption=correctOption, tag=tag)
+        question_details = Question.objects.get(id = qid)
+        return render(request, 'adminPortal/editQuestions.html', {'ques_details' : question_details})
