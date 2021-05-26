@@ -8,5 +8,53 @@
 />
 {% endblock %} 
 {% block body_block %}
-<h1>Admin Dashboard</h1>
-{% endblock %}
+
+<div class="container-fluid profile-block">
+  <form class="row "  >
+    <div class="mb-3 col-6">
+      <label for="NmaeInput" class="form-label">Name</label>
+      <input type = "text" class="form-control" id="NmaeInput" placeholder="Name" name="name" ></input>
+    </div>
+    <div class="mb-3 col-6">
+      <label for="EmailAddressInput" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="EmailAddressInput"
+        placeholder="name@example.com"
+        name="email"
+        required
+      />
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="BirthdayInput" class="form-label">Date Of Birth</label>
+      <input type="date" id="BirthdayInput" class="form-control" name="DOB" 
+        required>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="PhoneInput" class="form-label">Phone No. </label>
+      <input type="tel" id="PhoneInput" class="form-control" name="phone" placeholder="Phone"
+        required>
+    </div>
+
+    <div class= "available-quiz">
+      <h5>Quiz Questions Available</h5>
+      <div class="quiz-cards">
+        {% for tag in tags %}
+            <div class="card" >
+          <div class="card-body">
+            <h6 class="card-title">{{ tag.tag }}</h6>
+            <p class="card-text">Total Questions: </p>
+            <a href="questions/{{tag.tag}}" class="edit-btn">View Questions</a>
+          </div>
+        </div>
+        {% endfor %}        
+      </div>
+    </div>
+    </form>
+</div>
+
+
+  {% endblock %}

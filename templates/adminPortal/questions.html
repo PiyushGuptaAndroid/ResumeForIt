@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% extends 'adminPortal/baseAdmin.html' %} 
+{% load static %} 
+{% block header_block %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/adminPortal/questions.css' %}"
+/>
+{% endblock %} 
+{% block body_block %}
+
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col colu-0">S. No.</div>
+      <div class="col colu-1">Question</div>
+      <div class="col colu-2">Option A</div>
+      <div class="col colu-3">Option B</div>
+      <div class="col colu-4">Option C</div>
+      <div class="col colu-5">Option D</div>
+      <div class="col colu-6">Correct Answer</div>
+      <div class="col colu-8"> Edit</div>
+    </li>
+
+    <div class="tableRows">
+      {% for ques in ques_dict %} 
+      <li class="table-row">      
+        <div class="col colu-0" data-label="SNo">
+          {{ forloop.counter }}.        
+        </div>
+        <div class="col colu-1" data-label="Question">
+          {{ ques.question }}
+        </div>
+        <div class="col colu-2" data-label="optionA">
+          {{ques.optionA}}
+        </div>
+        <div class="col colu-3" data-label="optionB">
+          {{ques.optionB}}
+        </div>
+        <div class="col colu-4" data-label="optionC">
+          {{ques.optionC}}
+        </div>
+        <div class="col colu-5" data-label="optionD">
+          {{ques.optionD}}
+        </div>
+        <div class="col colu-6" data-label="correctAnswer">
+          {{ques.correctOption}}
+        </div>
+        <div class="col colu-7" data-label="edit">
+        <button
+      type="button" class = "btn btn-primary"
+    >
+Edit    </button>
+        </div>
+      </li>
+      {% endfor%}
+    </div>
+  </ul>
+
+{% endblock %}
