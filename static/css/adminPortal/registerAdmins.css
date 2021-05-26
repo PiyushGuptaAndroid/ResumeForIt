@@ -5,6 +5,40 @@
   --hoverColor: #4a8abb;
 }
 
-h1 {
-  color: var(--bgcolor1);
+form {
+
+  width: 60vw;
+}
+
+.register-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.form-control {
+  padding: 0.5rem;
+  height: 1.7rem;
+  font-size: small;
+}
+
+label{
+  font-size: small;
+  color: rgb(112, 112, 112);
+}
+
+.rows{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.btn-primary {
+  color: var(--baseColor);
+  background: linear-gradient(256.01deg, #ffd5d1 20.88%, #8be5ff 100.05%);
+  border: none;
+  border-radius: 6px;
+}
+.btn-primary:hover {
+  color: var(--hoverColor);
+  border: 2px solid var(--hoverColor);
 }

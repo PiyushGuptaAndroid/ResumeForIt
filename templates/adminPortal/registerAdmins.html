@@ -6,8 +6,78 @@
     <link rel="stylesheet" href="{% static 'css/adminPortal/registerAdmins.css' %}">
     {% endblock %}
       {% block body_block %}
-   <h1>Register Admins</h1>
+<div class="container-fluid register-block">
+  <form class="row needs-validation" novalidate method = "POST" action = "/studentRegistration">
+    {% csrf_token %}
+  <div class="mb-3 col-6">
+      <label for="NmaeInput" class="form-label">Name</label>
+      <input type = "text" class="form-control" id="NmaeInput" placeholder="Name" name="name" required></input>
+    </div>
+    <div class="mb-3 col-6">
+      <label for="EmailAddressInput" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="EmailAddressInput"
+        placeholder="name@example.com"
+        name="email"
+        required
+      />
+      <div class="invalid-feedback">Incorrect email address</div>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="BirthdayInput" class="form-label">Date Of Birth</label>
+      <input type="date" id="BirthdayInput" class="form-control" name="DOB" 
+        required>
+      <div class="invalid-feedback">Date of birth is Required</div>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="PhoneInput" class="form-label">Phone No. </label>
+      <input type="tel" id="PhoneInput" class="form-control" name="phone" placeholder="Phone"
+        required>
+      <div class="invalid-feedback">Phone No. is required</div>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+    </form>
+    </div>
 
     {% endblock %}
 
+{% block script_block%}
+<!-- Optional JavaScript -->
+<!-- Popper.js first, then Bootstrap JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+  integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  var forms = document.querySelectorAll(".needs-validation");
+
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+</script>
+{% endblock %}
  

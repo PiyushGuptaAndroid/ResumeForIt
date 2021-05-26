@@ -5,6 +5,63 @@
   --hoverColor: #4a8abb;
 }
 
-h1 {
+form{
+
+  width: 60vw;
+}
+
+.profile-block {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.form-control {
+  padding: 0.5rem;
+  height: 1.7rem;
+  font-size: small;
+}
+
+label{
+  font-size: small;
+  color: rgb(112, 112, 112);
+}
+y
+.rows{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.available-quiz{
+  width: 60vw;
+justify-content: center;
+}
+.quiz-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+h5{
+  color: var(--hoverColor);
+  
+}
+.card {
+  width: 12rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  border: none;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+
+.edit-btn {
+  text-decoration: none;
+  border: 1pz solid var(--baseColor);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
   color: var(--baseColor);
+  background: linear-gradient(256.01deg, #ffd5d1 20.88%, #8be5ff 100.05%);
+}
+.edit-btn:hover{
+  color: var(--hoverColor);
+  border: 2px solid var(--hoverColor);
 }

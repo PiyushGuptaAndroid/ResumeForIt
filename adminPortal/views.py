@@ -28,7 +28,9 @@ def addQuestions(request):
 
 
 def adminDashboard(request):
-    return render(request, 'adminPortal/adminDashboard.html')
+    tags = Question.objects.values('tag').distinct()
+    print(tags)
+    return render(request, 'adminPortal/adminDashboard.html', {'tags': tags})
 
 
 def eligibleCandidates(request):
@@ -37,3 +39,9 @@ def eligibleCandidates(request):
 
 def registerAdmins(request):
     return render(request, 'adminPortal/registerAdmins.html')
+
+def questions(request, tag):
+    print(tag)
+    ques_dict = Question.objects.filter(tag = tag )
+    print(ques_dict)
+    return render(request, 'adminPortal/questions.html', {'ques_dict' : ques_dict})
