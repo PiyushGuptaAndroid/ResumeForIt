@@ -13,6 +13,7 @@ from .models import *
 from .forms import  CreateUserForm
 
 
+
 def registerPage(request):
 	if request.user.is_authenticated:
 		return redirect('home')
@@ -33,7 +34,7 @@ def registerPage(request):
 
 def loginPage(request):
 	if request.user.is_authenticated:
-		return redirect('home')
+		return render(request, 'studentPortal/studentDashboard.html')
 	else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
@@ -43,7 +44,7 @@ def loginPage(request):
 
 			if user is not None:
 				login(request, user)
-				return redirect('home')
+				return render(request, 'studentPortal/studentDashboard.html')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 
@@ -54,9 +55,25 @@ def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
+def adlogoutUser(request):
+	logout(request)
+	return redirect('alogin')
 
 @login_required(login_url='login')
 def home(request):
 	return render(request, 'studentPortal/studentDashboard.html')
 
+def open(request):
+	return render(request, 'login/open.html')
+
+def adminLogin(request):
+	if request.method == 'POST':
+		username=request.POST["username"]
+		password=request.POST["password"]
+		if Recruiter.objects.filter(username=username,password=password).exists():
+			return render(request, 'adminPortal/adminDashboard.html',{"username":username})
+		else:
+			messages.info(request, 'Invalid Crendtial.')
+
+	return render(request, 'login/alogin.html', {})
 
