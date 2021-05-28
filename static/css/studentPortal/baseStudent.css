@@ -4,7 +4,7 @@
   --bgcolor2: #eeeeee;
   --hoverColor: #4a8abb;
 }
-h3
+.username
 {
    position:absolute;
    top:1.1rem !important;

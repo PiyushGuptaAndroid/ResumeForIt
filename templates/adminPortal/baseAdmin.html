@@ -82,7 +82,7 @@
       <nav class="navbar navbar-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"> ResumeFilter </a>
-          <h3>Hello, {{username}}</h3>
+          <h3 class="username">Welcome! ,{{request.session.user}}</h3>
           <div class="nav-right">
             <a href="{% url 'adlogout' %}"> LOGOUT </a>
             <img class = "robot" src= "{% static 'images/robot.png' %}"
@@ -105,7 +105,7 @@
                     {% endblock %}
             </div>
         </div>
-     </div>
+      </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
