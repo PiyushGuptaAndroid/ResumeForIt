@@ -3,11 +3,69 @@
 {% load static %} 
 {% block header_block %}
 <link rel="stylesheet" href="{% static 'css/adminPortal/addQuestions.css' %}" />
+<style>
+/* Popup container - can be anything you want */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+</style>
 {% endblock %} 
 {% block body_block %}
 <form class="form-container border rounded-3 border-info p-3 m-5"
   method="POST"
-  action="/addQuestions"
+  action="/questions/edit/{{ques_details.id}}"
 >
   {% csrf_token %}
   <div class="section row g-2 border rounded-3 border-3 border-primary p-2 m-2">
@@ -18,7 +76,7 @@
         id="floatingTextarea2"
         style="height: 100px"
         name="question"
-      ></textarea>
+      > {{ques_details.question}}</textarea>
       <label for="floatingTextarea2">Question</label>
     </div>
 
@@ -28,6 +86,7 @@
         class="form-control"
         id="floatingInput"
         placeholder="Option A"
+        value = "{{ques_details.optionA}}"
         name="optionA"
       />
       <label for="floatingInput">Option A</label>
@@ -39,6 +98,7 @@
         id="floatingInput"
         placeholder="Option B"
         name="optionB"
+        value = "{{ques_details.optionB}}"
       />
       <label for="floatingInput">Option B</label>
     </div>
@@ -50,6 +110,7 @@
         id="floatingInput"
         placeholder="Option C"
         name="optionC"
+        value = "{{ques_details.optionC}}"
       />
       <label for="floatingInput">Option C</label>
     </div>
@@ -60,6 +121,7 @@
         id="floatingInput"
         placeholder="Option D"
         name="optionD"
+        value = "{{ques_details.optionD}}"
       />
       <label for="floatingInput">Option D</label>
     </div>
@@ -73,6 +135,7 @@
         id="floatingInput"
         placeholder="Correct Answer"
         name="correctOption"
+        value = "{{ques_details.correctOption}}"
       />
       <label for="floatingTextarea2">Correct Answer</label>
     </div>
@@ -86,20 +149,16 @@
         id="floatingInput"
         placeholder="Tag"
         name="tag"
+        value = "{{ques_details.tag}}"
       />
       <label for="floatingInput">Tag</label>
     </div>
     </div>
   </div>
   <div class="bottom-section">
-    <button type="submit" class="btn btn-primary m-2" onclick = "successMessage()">Add</button>
-    <div class="add-button">
-      <i
-        class="bi bi-plus-circle"
-        style="font-size: 2.5rem; color: cornflowerblue"
-      ></i>
-    </div>
+    <button type="submit" class="btn btn-primary m-2" onclick="successMessage()">Update</button>
   </div>
+  
 </form>
 {% endblock %}
 

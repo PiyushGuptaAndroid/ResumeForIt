@@ -10,6 +10,14 @@
   width: 100vw;
   position: absolute;
 }
+.username
+{
+   position:absolute;
+   top:1.1rem !important;
+   left:35rem !important;
+   color: #ffc3bd !important;
+   
+}
 .page-content {
   background-color: white;
   border-radius: 1.5rem;

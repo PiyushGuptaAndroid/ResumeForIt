@@ -8,4 +8,5 @@ urlpatterns = [
     path('eligibleCandidates', views.eligibleCandidates, name='index'),
     path('registerAdmins', views.registerAdmins, name='index'),
     path('questions/<tag>', views.questions, name='index'),
+    path('questions/edit/<qid>', views.editQuestion, name='index'),
 ]
