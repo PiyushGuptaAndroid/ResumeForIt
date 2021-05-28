@@ -109,3 +109,7 @@ def studentProfile(request):
         return render(request, 'studentPortal/studentProfile.html', {'user_data': user_data})
     except ObjectDoesNotExist:
         return render(request, 'studentPortal/studentProfile.html', {'message' : "Register to update your profile"})   
+
+
+def studentAnalysis(request):
+    return render(request, 'studentPortal/studentAnalysis.html')

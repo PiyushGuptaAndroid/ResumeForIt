@@ -1,0 +1,11 @@
+<!DOCTYPE html> {% extends 'studentPortal/baseStudent.html' %} {% load static %}
+{% block header_block %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/studentPortal/studentAnalysis.css' %}"
+/>
+{% endblock %} {% block body_block %}
+    <h1>Student Analysis<h1>
+{% endblock %} {% block script_block%}
+{% comment %} <script src="{% static 'js\studentPortal\studentDashboard.js' %}"></script> {% endcomment %}
+{% endblock %}

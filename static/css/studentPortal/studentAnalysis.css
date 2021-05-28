@@ -1,0 +1,10 @@
+:root {
+    --baseColor: #002542;
+    --bgcolor1: #ffc3bd;
+    --bgcolor2: #eeeeee;
+    --hoverColor: #4a8abb;
+  }
+
+h1{
+    color: var(--baseColor);
+}  
