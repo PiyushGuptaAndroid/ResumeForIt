@@ -7,4 +7,5 @@ urlpatterns = [
     path('endquiz', views.endquiz, name='index'),
     path('studentDashboard', views.studentDashboard, name='index'),
     path('studentRegistration', views.studentRegistration, name='index'),
+    path('studentProfile', views.studentProfile, name='index'),
 ]

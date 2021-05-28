@@ -51,6 +51,12 @@
   color: white;
   padding: 0.3rem;
 }
+.navbar a:hover {
+  color: var(--bgcolor1);
+}
+.highlight {
+  background-color: var(--bgcolor1);
+}
 
 .robot {
   width: 4rem;

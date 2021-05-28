@@ -1,0 +1,123 @@
+<!DOCTYPE html> {% extends 'studentPortal/baseStudent.html' %} {% load static %}
+{% block header_block %}
+<link
+  rel="stylesheet"
+  href="{% static 'css/studentPortal/studentRegistration.css' %}"
+/>
+{% endblock %} {% block body_block %}
+<div class="container-fluid register-block">
+  <form class="row needs-validation" novalidate >
+  <div class= "message mb-3 col-12"> 
+    {{ message }}
+  </div>
+    {% csrf_token %}
+  <div class="mb-3 col-6">
+      <label for="NmaeInput" class="form-label">Name</label>
+      <input type = "text" class="form-control" id="NmaeInput" placeholder="Name" name="name" value= "{{user_data.name}}" disabled ></input>
+    </div>
+    <div class="mb-3 col-6">
+      <label for="EmailAddressInput" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="EmailAddressInput"
+        placeholder="name@example.com"
+        name="email"
+        value= "{{user_data.email}}" disabled 
+      />
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="BirthdayInput" class="form-label">Date Of Birth</label>
+      <input type="text" id="BirthdayInput" class="form-control" name="DOB" placeholder="DOB"
+        value= "{{user_data.DOB}}" disabled >
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="PhoneInput" class="form-label">Phone No. </label>
+      <input type="text" id="PhoneInput" class="form-control" name="phone" placeholder="Phone"
+        value= "{{user_data.phone}}" disabled >
+    </div>
+
+    {% comment %} Address {% endcomment %}
+
+    <label for="Adrress" class="form-label"><b>Address:</b></label>
+    <div class="mb-3 col-12">
+          <label for="StreetAddressInput" class="form-label">Street Address</label>
+          <input type="text" id="StreetAddressInput" class="form-control" name="StreetAddress" placeholder="StreetAddress"
+            value= "{{user_data.StreetAddress}}" disabled >
+    </div>
+
+        <div class="mb-3 col-3">
+          <label for="cityInput" class="form-label">City</label>
+          <input type="text" id="cityInput" class="form-control" name="city" placeholder="city"
+            value= "{{user_data.city}}" disabled>
+        </div>
+
+        <div class="mb-3 col-3">
+          <label for="stateInput" class="form-label">State</label>
+          <input type="text" id="stateInput" class="form-control" name="state" placeholder="state"
+            value= "{{user_data.state}}" disabled>
+        </div>
+
+        <div class="mb-3 col-3">
+          <label for="countryInput" class="form-label">country</label>
+          <input type="text" id="countryInput" class="form-control" name="country" placeholder="country"
+            value= "{{user_data.country}}" disabled>
+        </div>
+        <div class="mb-3 col-3">
+          <label for="pincodeInput" class="form-label">Pincode</label>
+          <input type="text" id="pincodeInput" class="form-control" name="pincode" placeholder="pincode"
+            value= "{{user_data.pincode}}" disabled>
+        </div>
+
+{% comment %} Qualifications {% endcomment %}
+    
+    <label for="qualifications" class="form-label"><b>Qualifications:</b> </label>
+    <label for="highestDegreeCompleted" class="form-label">Highest Degree Completed: </label>
+    <div class="mb-3 col-12">
+        <input
+          class="form-control"
+          type="text"
+          name="highestDegree"
+          id="bachelors"
+          placeholder="highest degree"
+          value= "{{user_data.highestDegree}}" disabled
+        />
+    </div>
+
+    <div class="mb-3 col-2">
+      <label for="yearOfDegreeCompletedInput" class="form-label">Year (passout)</label>
+          <input type="text" id="yearOfDegreeCompletedInput" class="form-control" name="yearOfDegreeCompleted" placeholder="year"
+            value= "{{user_data.yearOfDegreeCompleted}}" disabled>
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="institutionInput" class="form-label">Institution </label>
+          <input type="text" id="institutionInput" class="form-control" name="institution" placeholder="institution"
+            value= "{{user_data.institution}}" disabled>
+    </div>
+
+    <div class="mb-3 col-4">
+      <label for="specificationInput" class="form-label">Specification </label>
+          <input type="text" id="specificationInput" class="form-control" name="specification" placeholder="specification"
+            value= "{{user_data.specification}}" disabled>
+    </div>
+
+  </form>
+</div>
+{% endblock %} {% block script_block%}
+<!-- Optional JavaScript -->
+<!-- Popper.js first, then Bootstrap JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+  integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+  crossorigin="anonymous"
+></script>
+
+{% endblock %}

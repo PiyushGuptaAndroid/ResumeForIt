@@ -44,3 +44,8 @@ y
     border: 2px solid var(--hoverColor);
   }
 
+.message {
+    color: red;
+    font-size: small;
+    text-align: center;
+}

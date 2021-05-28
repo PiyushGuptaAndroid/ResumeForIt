@@ -1,16 +1,20 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 from adminPortal.models import Question
 from studentPortal.models import User_Profile
 from json import dumps
 from django.core import serializers
+from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
+
+
+
 # importing uuid
 import uuid
 
 # Create your views here.
 
 # test = 0
-
 
 def startquiz(request):
     return render(request, 'studentPortal/quiz/start.html')
@@ -56,9 +60,10 @@ def studentRegistration(request):
         institution = request.POST['institution']
         specification = request.POST['specification']
         # print(test)
-        # user = MyUUIDModel.objects.get(id=test)
-        data = User_Profile(
-            # user_id=user,
+        user = User.objects.get(id= request.user.id)
+        if(User_Profile.objects.filter(user_id = user).exists):
+            User_Profile.objects.filter(user_id = user).update(
+            user_id= user,
             name=name,
             email=email,
             DOB=DOB,
@@ -72,7 +77,35 @@ def studentRegistration(request):
             yearOfDegreeCompleted=yearOfDegreeCompleted,
             institution=institution,
             specification=specification,)
-        data.save()
-        # print(data)
-        # print("data is saved")
+        else :
+            data = User_Profile(
+                user_id= user,
+                name=name,
+                email=email,
+                DOB=DOB,
+                phone=phone,
+                StreetAddress=StreetAddress,
+                city=city,
+                state=state,
+                country=country,
+                pincode=pincode,
+                highestDegree=highestDegree,
+                yearOfDegreeCompleted=yearOfDegreeCompleted,
+                institution=institution,
+                specification=specification,)
+            data.save()
     return render(request, 'studentPortal/studentRegistration.html')
+
+
+def studentProfile(request):
+    user = User.objects.get(id= request.user.id)
+    # if(User_Profile.objects.filter(user_id = user).exists):
+    #     user_data = User_Profile.objects.get(user_id = request.user.id)    
+    #     return render(request, 'studentPortal/studentProfile.html', {'user_data': user_data})
+    # else:
+    #     return render(request, 'studenPortal/studentProfile')   
+    try:
+        user_data = User_Profile.objects.get(user_id = request.user.id) 
+        return render(request, 'studentPortal/studentProfile.html', {'user_data': user_data})
+    except ObjectDoesNotExist:
+        return render(request, 'studentPortal/studentProfile.html', {'message' : "Register to update your profile"})   

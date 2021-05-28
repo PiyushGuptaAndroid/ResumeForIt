@@ -30,8 +30,8 @@
           <a class="navbar-brand" href="#"> ResumeFilter </a>
           <h3 class="username">Welcome! , {{user.username}}</h3>
           <div class="nav-right">
-            <a href="#"> HOME </a>
-            <a href="#"> MY PROFILE </a>
+            <a href="/studentDashboard"> HOME </a>
+            <a href="/studentProfile"> MY PROFILE </a>
             <a href="#"> ANALYSIS </a>
             <a href="{% url 'logout'%}"> LOGOUT </a>
             <img class = "robot" src= "{% static 'images/robot.png' %}"
@@ -51,8 +51,18 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
+    <script>
+      var $nava = $(".nav-right a");
 
-    {%block script_block %} {% endblock%}
+      $nava.click(function() {
+        $nava.removeClass('highlight')
+        $(this).addClass('highlight');
+      });
+    </script>
+
+    {%block script_block %} 
+    
+    {% endblock%}
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

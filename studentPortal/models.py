@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 # import uuid
 from django.db.models.deletion import CASCADE
@@ -14,7 +15,7 @@ from django.db.models.fields.related import ForeignKey
 
 
 class User_Profile(models.Model):
-    # user_id = ForeignKey(MyUUIDModel, on_delete=CASCADE)
+    user_id = models.ForeignKey(User, on_delete=CASCADE,default=1)
     name = models.CharField(max_length=40)
     email = models.EmailField()
     DOB = models.DateField()
