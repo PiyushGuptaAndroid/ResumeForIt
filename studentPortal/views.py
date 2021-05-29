@@ -1,11 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse, request
+from django.shortcuts import redirect, render
+from django.http import HttpResponseRedirect, request
 from adminPortal.models import Question
-from studentPortal.models import User_Profile
+from studentPortal.models import User_Profile, Analysis, Resume
 from json import dumps
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
+import datetime
 
 
 
@@ -112,4 +113,33 @@ def studentProfile(request):
 
 
 def studentAnalysis(request):
-    return render(request, 'studentPortal/studentAnalysis.html')
+    user = User.objects.get(id= request.user.id)
+    results_dict = Analysis.objects.filter(user_id = user )
+    return render(request, 'studentPortal/studentAnalysis.html', {'results_dict': results_dict})
+    
+def gettingResult(request):
+    user = User.objects.get(id= request.user.id)
+    date =  datetime.date.today()
+    points = request.POST['points']
+    totalPoints = request.POST['totalPoints']
+    percentage = float(int(points)/int(totalPoints))*100
+    if(percentage >= 80):
+        status = "eligible"
+    else:
+        status = "suspended"
+    data = Analysis(user_id = user, date = date, score = points, total = totalPoints, percentage = percentage, status = status)
+    data.save()
+    print(data)
+    print("data is saved")
+    return render(request, 'studentPortal/studentDashboard.html')
+
+def uploadResume(request):
+    if(request.method == "GET"):
+        return render(request, 'studentPortal/uploadResume.html')
+    if(request.method == "POST"):
+        print(request.POST['resume'])
+        user = User.objects.get(id= request.user.id)
+        resume = request.POST['resume']
+        data = Resume(user_id = user, resume = resume)
+        data.save()
+        return render(request, 'studentPortal/studentDashboard.html')

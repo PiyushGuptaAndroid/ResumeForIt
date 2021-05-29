@@ -1,6 +1,8 @@
 questions = JSON.parse(questionsData);
 let question_count = 0;
 let points = 0;
+totalPoints = questions.length * 10;
+sessionStorage.setItem("totalPoints", totalPoints);
 
 window.onload = function () {
 console.log("hello");
@@ -13,7 +15,7 @@ function next() {
 
 
   // if the question is last then redirect to final page
-  if (question_count == questions.length - 1) {
+  if (question_count == questions.length - 1) {3
     sessionStorage.setItem("time", time);
     clearInterval(mytime);
     location.href = "endquiz";
@@ -22,8 +24,10 @@ function next() {
 
   let user_answer = document.querySelector("li.option.active").innerHTML;
   // check if the answer is right or wrong
+  // console.log("user_answer", user_answer);
+  // console.log("coorect answer", questions[question_count].fields.correctOption);
   if (user_answer == questions[question_count].fields.correctOption) {
-    points += 10;
+    points += 10; 
     sessionStorage.setItem("points", points);
   }
   console.log(points);

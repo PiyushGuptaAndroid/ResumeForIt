@@ -51,13 +51,18 @@
       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
       crossorigin="anonymous"
     ></script>
-    <script>
-      var $nava = $(".nav-right a");
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-      $nava.click(function() {
-        $nava.removeClass('highlight')
-        $(this).addClass('highlight');
-      });
+    <script>
+      const currentLocation = location.href;
+      const menuItem = document.querySelectorAll('a');
+      const menuLength = menuItem.length;
+      for(let i = 0; i<menuLength; i++){
+        if(menuItem[i].href === currentLocation){
+          menuItem[i].className = "active"
+        }
+      }
+
     </script>
 
     {%block script_block %} 

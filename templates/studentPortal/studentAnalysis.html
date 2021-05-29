@@ -5,7 +5,45 @@
   href="{% static 'css/studentPortal/studentAnalysis.css' %}"
 />
 {% endblock %} {% block body_block %}
-    <h1>Student Analysis<h1>
+     <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col colu-0">S. No.</div>
+      <div class="col colu-1">Username</div>
+      <div class="col colu-2">Date</div>
+      <div class="col colu-3">Score</div>
+      <div class="col colu-4">Total</div>
+      <div class="col colu-5">Percentage</div>
+      <div class="col colu-6">Status</div>
+    </li>
+
+    <div class="tableRows">
+      {% for result in results_dict %} 
+      <li class="table-row">      
+        <div class="col colu-0" data-label="SNo">
+          {{ forloop.counter }}.        
+        </div>
+        <div class="col colu-1" data-label="Username">
+          {{ result.user_id }}
+        </div>
+        <div class="col colu-2" data-label="Date">
+          {{result.date}}
+        </div>
+        <div class="col colu-3" data-label="Score">
+          {{result.score}}
+        </div>
+        <div class="col colu-4" data-label="Total">
+          {{result.total}}
+        </div>
+        <div class="col colu-5" data-label="Percentage">
+          {{result.percentage}}
+        </div>
+        <div class="col colu-6" data-label="Status">
+          {{result.status}}
+        </div>
+      </li>
+      {% endfor%}
+    </div>
+  </ul>
 {% endblock %} {% block script_block%}
 {% comment %} <script src="{% static 'js\studentPortal\studentDashboard.js' %}"></script> {% endcomment %}
 {% endblock %}

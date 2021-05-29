@@ -16,13 +16,23 @@
            <i class="fas fa-award award_icon"></i>
            <h3 class="username">well done! <span class="name"></span></h3>
            <p class="userpoints">Your Points <span class="points"></span></p>
-         <p class="usertime"> Time taken <span class="time_taken"></span></p>
+         <p class="usertime"> Time taken <span class="time_taken"></span></p>  
+         <form method = "POST" action = "/gettingResult"> 
+            {% csrf_token %}
+            <input type= "hidden" id = "result" name = "points" value = "" />
+            <input type= "hidden" id = "totalPoints" name = "totalPoints" value = "" />
+            <button type="submit" id="send-my-url-to-django-button">Done</button>
+        </form>
         </div>
     </div>
-    <script src="https://kit.fontawesome.com/d56261bbb9.js"></script>
+    
+</body>
+
+<script src="https://kit.fontawesome.com/d56261bbb9.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 
         <!-- user info -->
         <script src="{% static 'js/studentPortal/quiz/userInfo.js' %}"></script>
-</body>
+       
 </html>
