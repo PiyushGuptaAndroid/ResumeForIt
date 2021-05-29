@@ -53,7 +53,7 @@
 }
 
 .start-quiz-btn,
-.register-btn {
+.register-btn, .upload-btn {
   width: 6rem;
   height: 2rem;
   color: var(--baseColor);
@@ -63,7 +63,7 @@
 }
 
 .start-quiz-btn:hover,
-.register-btn:hover {
+.register-btn:hover, .upload-btn:hover {
   color: var(--hoverColor);
   border: 2px solid var(--hoverColor);
 }

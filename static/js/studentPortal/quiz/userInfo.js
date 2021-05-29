@@ -1,7 +1,11 @@
-let user_name = sessionStorage.getItem("name");
-let user_points = sessionStorage.getItem("points");
-let user_time = sessionStorage.getItem("time");
-document.querySelector("span.name").innerHTML = user_name;
-document.querySelector("span.points").innerHTML = user_points;
-document.querySelector("span.time_taken").innerHTML = user_time;
-
+$(document).ready(function() {
+    let user_name = sessionStorage.getItem("name");
+    let user_points = sessionStorage.getItem("points");
+    let user_time = sessionStorage.getItem("time");
+    document.querySelector("span.name").innerHTML = user_name;
+    document.querySelector("span.points").innerHTML = user_points;
+    document.querySelector("span.time_taken").innerHTML = user_time;
+    document.getElementById("result").setAttribute('value', sessionStorage.getItem("points"));
+    document.getElementById("totalPoints").setAttribute('value', sessionStorage.getItem("totalPoints"));
+    
+});

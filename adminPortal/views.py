@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from adminPortal.models import Question
+from login.models import Recruiter
 from django.core import serializers
 
 # Create your views here.
@@ -28,8 +29,13 @@ def addQuestions(request):
 
 
 def adminDashboard(request):
+    admin_details = Recruiter.objects.get(username = request.session.get('user'))
     tags = Question.objects.values('tag').distinct()
-    return render(request, 'adminPortal/adminDashboard.html', {'tags': tags})
+    dict = {
+        'admin_details' : admin_details,
+        'tags' : tags
+    }
+    return render(request, 'adminPortal/adminDashboard.html', {'admin_dict': dict})
 
 
 def eligibleCandidates(request):
@@ -37,10 +43,16 @@ def eligibleCandidates(request):
 
 
 def registerAdmins(request):
+    if(request.method == "POST"):
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        data = Recruiter(username = username, email = email, password = password)
+        data.save()
     return render(request, 'adminPortal/registerAdmins.html')
 
 def questions(request, tag):
-    ques_dict = Question.objects.filter(tag = tag )
+    ques_dict = Question.objects.get(tag = tag )
     return render(request, 'adminPortal/questions.html', {'ques_dict' : ques_dict})
 
 

@@ -54,8 +54,8 @@
 .navbar a:hover {
   color: var(--bgcolor1);
 }
-.highlight {
-  background-color: var(--bgcolor1);
+a.active {
+  color: var(--bgcolor1);
 }
 
 .robot {
