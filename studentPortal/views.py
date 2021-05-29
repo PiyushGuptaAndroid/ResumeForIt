@@ -7,7 +7,7 @@ from django.core import serializers
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
-
+import json
 
 
 # importing uuid
@@ -23,9 +23,10 @@ def startquiz(request):
 
 def quiz(request):
     ques = serializers.serialize(
-        "json", Question.objects.filter(tag__in=['C++', 'Python']).order_by('?')[:4])
+        "json", Question.objects.filter(tag__in=['C++', 'Python', 'Java']).order_by('?')[:4])
     print()
     questionsJson = dumps(ques)
+
     return render(request, 'studentPortal/quiz/quiz.html', {'questionsData': questionsJson})
 
 
@@ -114,20 +115,25 @@ def studentProfile(request):
 
 def studentAnalysis(request):
     user = User.objects.get(id= request.user.id)
-    results_dict = Analysis.objects.filter(user_id = user )
-    return render(request, 'studentPortal/studentAnalysis.html', {'results_dict': results_dict})
+    results = Analysis.objects.filter(user_id = user )
+    for i in range(0, len(results)):
+        results[i].detailed_result = json.loads(results[i].detailed_result)    
+        print(results[i].detailed_result)
+    return render(request, 'studentPortal/studentAnalysis.html', {'results_dict': results})
     
 def gettingResult(request):
     user = User.objects.get(id= request.user.id)
     date =  datetime.date.today()
     points = request.POST['points']
     totalPoints = request.POST['totalPoints']
+    skills_result = request.POST['skills_result']
+    # print(skills_result)
     percentage = float(int(points)/int(totalPoints))*100
     if(percentage >= 80):
         status = "eligible"
     else:
         status = "suspended"
-    data = Analysis(user_id = user, date = date, score = points, total = totalPoints, percentage = percentage, status = status)
+    data = Analysis(user_id = user, date = date, score = points, total = totalPoints, percentage = percentage, status = status, detailed_result = skills_result)
     data.save()
     print(data)
     print("data is saved")

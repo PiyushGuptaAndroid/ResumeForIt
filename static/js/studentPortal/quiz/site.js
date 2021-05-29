@@ -3,9 +3,23 @@ let question_count = 0;
 let points = 0;
 totalPoints = questions.length * 10;
 sessionStorage.setItem("totalPoints", totalPoints);
-
+var skills_set = new Set();
+var skills_dict = {}
 window.onload = function () {
 console.log("hello");
+
+  for (let i = 0; i < questions.length; i++){
+    skills_set.add(questions[i].fields.tag)
+  }
+  console.log(skills_set)
+  var skills_array = [...skills_set];
+  for (let i = 0; i < skills_array.length; i++){
+    skills_dict[skills_array[i]] = [];
+  }
+  for (let i = 0; i < skills_array.length; i++){
+    skills_dict[skills_array[i]][0] = 0;
+    skills_dict[skills_array[i]][1] = 0;
+  }
 
   show(question_count);
 
@@ -15,7 +29,7 @@ function next() {
 
 
   // if the question is last then redirect to final page
-  if (question_count == questions.length - 1) {3
+  if (question_count == questions.length - 1) {
     sessionStorage.setItem("time", time);
     clearInterval(mytime);
     location.href = "endquiz";
@@ -27,9 +41,12 @@ function next() {
   // console.log("user_answer", user_answer);
   // console.log("coorect answer", questions[question_count].fields.correctOption);
   if (user_answer == questions[question_count].fields.correctOption) {
-    points += 10; 
+    points += 10;
+    skills_dict[questions[question_count].fields.tag][0] = skills_dict[questions[question_count].fields.tag][0] + 10;
     sessionStorage.setItem("points", points);
+    console.log(skills_dict);
   }
+  sessionStorage.setItem('skills_result', JSON.stringify(skills_dict));
   console.log(points);
 
   question_count++;
@@ -41,6 +58,7 @@ function show(count) {
   // let [first, second, third, fourth] = questions[count].options;
   let [first, second, third, fourth] = [questions[count].fields.optionA, questions[count].fields.optionB, questions[count].fields.optionC, questions[count].fields.optionD];
 
+  skills_dict[questions[count].fields.tag][1] = skills_dict[questions[count].fields.tag][1] + 10;
   question.innerHTML = `
   <h2>Q${count + 1}. ${questions[count].fields.question}</h2>
    <ul class="option_group">

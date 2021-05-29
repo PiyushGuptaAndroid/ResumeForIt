@@ -7,5 +7,6 @@ $(document).ready(function() {
     document.querySelector("span.time_taken").innerHTML = user_time;
     document.getElementById("result").setAttribute('value', sessionStorage.getItem("points"));
     document.getElementById("totalPoints").setAttribute('value', sessionStorage.getItem("totalPoints"));
+    document.getElementById("skills_result").setAttribute('value', sessionStorage.getItem("skills_result"));
     
 });
