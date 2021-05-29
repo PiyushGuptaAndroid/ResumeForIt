@@ -118,7 +118,6 @@ def studentAnalysis(request):
     results = Analysis.objects.filter(user_id = user )
     for i in range(0, len(results)):
         results[i].detailed_result = json.loads(results[i].detailed_result)    
-        print(results[i].detailed_result)
     return render(request, 'studentPortal/studentAnalysis.html', {'results_dict': results})
     
 def gettingResult(request):
