@@ -29,3 +29,16 @@ class User_Profile(models.Model):
     yearOfDegreeCompleted = models.IntegerField()
     institution = models.TextField()
     specification = models.TextField()
+
+class Analysis(models.Model):
+    user_id = models.ForeignKey(User, on_delete=CASCADE,default=1)
+    date = models.DateField()
+    score = models.IntegerField()
+    total = models.IntegerField()
+    percentage = models.FloatField()
+    status = models.CharField(max_length=20) 
+    detailed_result = models.TextField(default= "null")
+
+class Resume(models.Model):
+    user_id = models.ForeignKey(User, on_delete=CASCADE,default=1)
+    resume = models.FileField()

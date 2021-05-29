@@ -1,12 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponse, request
+from django.shortcuts import redirect, render
+from django.http import HttpResponseRedirect, request
 from adminPortal.models import Question
-from studentPortal.models import User_Profile
+from studentPortal.models import User_Profile, Analysis, Resume
 from json import dumps
 from django.core import serializers
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-
+import datetime
+import json
 
 
 # importing uuid
@@ -22,9 +23,10 @@ def startquiz(request):
 
 def quiz(request):
     ques = serializers.serialize(
-        "json", Question.objects.filter(tag__in=['C++', 'Python']).order_by('?')[:4])
+        "json", Question.objects.filter(tag__in=['C++', 'Python', 'Java']).order_by('?')[:4])
     print()
     questionsJson = dumps(ques)
+
     return render(request, 'studentPortal/quiz/quiz.html', {'questionsData': questionsJson})
 
 
@@ -109,3 +111,41 @@ def studentProfile(request):
         return render(request, 'studentPortal/studentProfile.html', {'user_data': user_data})
     except ObjectDoesNotExist:
         return render(request, 'studentPortal/studentProfile.html', {'message' : "Register to update your profile"})   
+
+
+def studentAnalysis(request):
+    user = User.objects.get(id= request.user.id)
+    results = Analysis.objects.filter(user_id = user )
+    for i in range(0, len(results)):
+        results[i].detailed_result = json.loads(results[i].detailed_result)    
+        print(results[i].detailed_result)
+    return render(request, 'studentPortal/studentAnalysis.html', {'results_dict': results})
+    
+def gettingResult(request):
+    user = User.objects.get(id= request.user.id)
+    date =  datetime.date.today()
+    points = request.POST['points']
+    totalPoints = request.POST['totalPoints']
+    skills_result = request.POST['skills_result']
+    # print(skills_result)
+    percentage = float(int(points)/int(totalPoints))*100
+    if(percentage >= 80):
+        status = "eligible"
+    else:
+        status = "suspended"
+    data = Analysis(user_id = user, date = date, score = points, total = totalPoints, percentage = percentage, status = status, detailed_result = skills_result)
+    data.save()
+    print(data)
+    print("data is saved")
+    return render(request, 'studentPortal/studentDashboard.html')
+
+def uploadResume(request):
+    if(request.method == "GET"):
+        return render(request, 'studentPortal/uploadResume.html')
+    if(request.method == "POST"):
+        print(request.POST['resume'])
+        user = User.objects.get(id= request.user.id)
+        resume = request.POST['resume']
+        data = Resume(user_id = user, resume = resume)
+        data.save()
+        return render(request, 'studentPortal/studentDashboard.html')

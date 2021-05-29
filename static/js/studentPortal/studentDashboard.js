@@ -4,3 +4,6 @@ function startQuiz() {
 function register() {
     location.href ="studentRegistration";
 }
+function upload() {
+    location.href ="uploadResume";
+}

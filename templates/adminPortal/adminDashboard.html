@@ -11,38 +11,29 @@
 
 <div class="container-fluid profile-block">
   <form class="row "  >
+    
     <div class="mb-3 col-6">
-      <label for="NmaeInput" class="form-label">Name</label>
-      <input type = "text" class="form-control" id="NmaeInput" placeholder="Name" name="name" ></input>
+      <label for="NmaeInput" class="form-label">Username</label>
+      <input type = "text" class="form-control" id="NmaeInput" placeholder="Username" name="username"  value = "{{admin_dict.admin_details.username}}" disabled></input>
     </div>
     <div class="mb-3 col-6">
-      <label for="EmailAddressInput" class="form-label">Email address</label>
+      <label for="EmailAddressInput" class="form-label">Emai</label>
       <input
         type="email"
         class="form-control"
         id="EmailAddressInput"
         placeholder="name@example.com"
         name="email"
-        required
+        value = "{{admin_dict.admin_details.email}}"
+        disabled
       />
     </div>
 
-    <div class="mb-3 col-6">
-      <label for="BirthdayInput" class="form-label">Date Of Birth</label>
-      <input type="date" id="BirthdayInput" class="form-control" name="DOB" 
-        required>
-    </div>
-
-    <div class="mb-3 col-6">
-      <label for="PhoneInput" class="form-label">Phone No. </label>
-      <input type="tel" id="PhoneInput" class="form-control" name="phone" placeholder="Phone"
-        required>
-    </div>
 
     <div class= "available-quiz">
       <h5>Quiz Questions Available</h5>
       <div class="quiz-cards">
-        {% for tag in tags %}
+        {% for tag in admin_dict.tags %}
             <div class="card" >
           <div class="card-body">
             <h6 class="card-title">{{ tag.tag }}</h6>

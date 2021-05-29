@@ -7,14 +7,15 @@
     {% endblock %}
       {% block body_block %}
 <div class="container-fluid register-block">
-  <form class="row needs-validation" novalidate method = "POST" action = "/studentRegistration">
+  <form class="row needs-validation" novalidate method = "POST" action = "/registerAdmins">
     {% csrf_token %}
   <div class="mb-3 col-6">
-      <label for="NmaeInput" class="form-label">Name</label>
-      <input type = "text" class="form-control" id="NmaeInput" placeholder="Name" name="name" required></input>
+      <label for="NmaeInput" class="form-label">Username</label>
+      <input type = "text" class="form-control" id="NmaeInput" placeholder="Username" name="username" required></input>
+      <div class="invalid-feedback">Username is required</div>
     </div>
     <div class="mb-3 col-6">
-      <label for="EmailAddressInput" class="form-label">Email address</label>
+      <label for="EmailAddressInput" class="form-label">Emai</label>
       <input
         type="email"
         class="form-control"
@@ -27,20 +28,14 @@
     </div>
 
     <div class="mb-3 col-6">
-      <label for="BirthdayInput" class="form-label">Date Of Birth</label>
-      <input type="date" id="BirthdayInput" class="form-control" name="DOB" 
+      <label for="BirthdayInput" class="form-label">Password</label>
+      <input type="text" id="paaswordInput" class="form-control" name="password" placeholder = "Password"
         required>
-      <div class="invalid-feedback">Date of birth is Required</div>
+      <div class="invalid-feedback">Password is required</div>
     </div>
 
-    <div class="mb-3 col-6">
-      <label for="PhoneInput" class="form-label">Phone No. </label>
-      <input type="tel" id="PhoneInput" class="form-control" name="phone" placeholder="Phone"
-        required>
-      <div class="invalid-feedback">Phone No. is required</div>
-    </div>
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit</button>
+      <button class="btn btn-primary" type="submit" onclick = "success()">Submit</button>
     </div>
     </form>
     </div>
@@ -78,6 +73,10 @@
       false
     );
   });
+
+  function success() {
+    alert("Admin is created successfully")
+  } 
 </script>
 {% endblock %}
  

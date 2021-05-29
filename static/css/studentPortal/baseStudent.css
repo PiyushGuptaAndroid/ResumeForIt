@@ -25,6 +25,7 @@
   height: calc(100vh - 4.5rem);
   width: calc(100vw - 2rem);
   overflow: scroll;
+  overflow-x: scroll;
 }
 
 .navbar-light {
@@ -54,8 +55,8 @@
 .navbar a:hover {
   color: var(--bgcolor1);
 }
-.highlight {
-  background-color: var(--bgcolor1);
+a.active {
+  color: var(--bgcolor1);
 }
 
 .robot {
