@@ -5,12 +5,17 @@
     --hoverColor: #4a8abb;
   }
 
+.analysis-content{
+  margin-top: 3rem;
+  width: 98vw;
+  overflow-x: scroll;
+}
 
 .responsive-table {
-  width: 80vw;
-  margin-top: 3rem;
-  margin-left: 10%;  
-  width: 70vw;
+  margin-bottom: 1rem;
+  padding: 0;
+  width: 100%;
+  padding: 0 1rem
 }
 li {
 border-radius: 3px;

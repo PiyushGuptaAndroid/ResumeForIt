@@ -37,6 +37,7 @@ class Analysis(models.Model):
     total = models.IntegerField()
     percentage = models.FloatField()
     status = models.CharField(max_length=20) 
+    detailed_result = models.TextField(default= "null")
 
 class Resume(models.Model):
     user_id = models.ForeignKey(User, on_delete=CASCADE,default=1)
