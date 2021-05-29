@@ -41,4 +41,4 @@ class Analysis(models.Model):
 
 class Resume(models.Model):
     user_id = models.ForeignKey(User, on_delete=CASCADE,default=1)
-    resume = models.FileField()
+    resume = models.FileField(null = True)

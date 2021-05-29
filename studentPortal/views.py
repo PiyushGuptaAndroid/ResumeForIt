@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
 import json
+from pyresparser import ResumeParser
 
 
 # importing uuid
@@ -16,14 +17,21 @@ import uuid
 # Create your views here.
 
 # test = 0
+filtered_skills = []
 
 def startquiz(request):
+    user = User.objects.get(id= request.user.id)
+    resume_data = Resume.objects.get(user_id = user)
+    resume_url = '.' + resume_data.resume.url
+    filtered_resume = ResumeParser(resume_url).get_extracted_data()
+    global filtered_skills
+    filtered_skills = filtered_resume['skills']
     return render(request, 'studentPortal/quiz/start.html')
 
 
 def quiz(request):
     ques = serializers.serialize(
-        "json", Question.objects.filter(tag__in=['C++', 'Python', 'Java']).order_by('?')[:4])
+        "json", Question.objects.filter(tag__in=filtered_skills).order_by('?')[:4])
     print()
     questionsJson = dumps(ques)
 
@@ -136,15 +144,15 @@ def gettingResult(request):
     data.save()
     print(data)
     print("data is saved")
+    
     return render(request, 'studentPortal/studentDashboard.html')
 
 def uploadResume(request):
     if(request.method == "GET"):
         return render(request, 'studentPortal/uploadResume.html')
     if(request.method == "POST"):
-        print(request.POST['resume'])
         user = User.objects.get(id= request.user.id)
-        resume = request.POST['resume']
+        resume = request.FILES['resume']
         data = Resume(user_id = user, resume = resume)
         data.save()
         return render(request, 'studentPortal/studentDashboard.html')
