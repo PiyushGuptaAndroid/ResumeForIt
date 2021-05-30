@@ -18,6 +18,10 @@
 .amico {
   width: 40vw;
 }
+.check {
+  width: 1rem;
+  height: 1rem;
+}
 
 .accordion {
   position: absolute;
@@ -26,6 +30,16 @@
   width: 45vw;
   z-index: 100;
 }
+/* .register-check {
+  position: absolute;
+  top: 10%;
+  left: 18%;
+}
+.upload-check {
+  position: absolute;
+  top: 33%;
+  left: 27%;
+} */
 
 .accordion-item {
   margin: 1rem;
@@ -54,7 +68,7 @@
 
 .start-quiz-btn,
 .register-btn, .upload-btn {
-  width: 6rem;
+  width: auot;
   height: 2rem;
   color: var(--baseColor);
   background: linear-gradient(256.01deg, #ffd5d1 20.88%, #8be5ff 100.05%);

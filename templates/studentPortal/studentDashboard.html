@@ -4,9 +4,16 @@
   rel="stylesheet"
   href="{% static 'css/studentPortal/studentDashboard.css' %}"
 />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 {% endblock %} {% block body_block %}
 <div class="dashboard-content">
+
   <div class="accordion accordion-flush" id="accordionFlushExample">
+        {% comment %} {% if registered %}
+              <div class="register-check">
+                  <img class ="check" src = {% static 'images/check.png' %}>
+              </div>  
+        {% endif %} {% endcomment %}
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingOne">
         <button
@@ -17,9 +24,13 @@
           aria-expanded="false"
           aria-controls="flush-collapseOne"
         >
-          Register
+          Register    
+           
         </button>
-      </h2>
+      </h2>      
+      
+
+    
       <div
         id="flush-collapseOne"
         class="accordion-collapse collapse"
@@ -27,9 +38,16 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
-          <button class="register-btn" onclick="register()">
-            Register
-          </button>
+          {% if registered %}
+            <button class="register-btn" onclick="register()">
+              Update Profile
+            </button>
+          {% else %}  
+            <button class="register-btn" onclick="register()">
+              Register
+            </button>
+          {% endif %}  
+          
         </div>
       </div>
     </div>
@@ -46,6 +64,11 @@
           Upload Resume
         </button>
       </h2>
+      {% comment %} {% if uploadedResume %}
+            <div class="upload-check">
+                <img class ="check" src = {% static 'images/check.png' %}>
+            </div>  
+       {% endif %} {% endcomment %}
       <div
         id="flush-collapseTwo"
         class="accordion-collapse collapse"
@@ -53,9 +76,19 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
-          <button class="upload-btn" onclick="upload()">
-            Upload
-          </button>
+        {% if registered %}
+            {% if not uploadedResume %}
+                <button class="upload-btn" onclick="upload()">
+                  Upload
+                </button>
+            {% else %}
+                <button class="upload-btn" onclick="upload()">
+                  Update Resume
+                </button>
+            {% endif %}
+        {% else %}
+          <p>Register yourself first</p> 
+        {% endif %}
         </div>
       </div>
     </div>
@@ -79,17 +112,26 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
-          <p>
-            Start your quiz assigned by the company. Complete your quiz under 1
-            hour time. you will have 20 multiple choice questions and you need
-            to complete your test while webcam on and do not cheat in this test.
-            Start your quiz assigned by the company. Complete your quiz under 1
-            hour time. you will have 20 multiple choice questions.
-          </p>
+          {% if uploadedResume %}
+              {% if  showQuiz  %}
+                <p>
+                  Start your quiz assigned by the company. Complete your quiz under 1
+                  hour time. you will have 20 multiple choice questions and you need
+                  to complete your test while webcam on and do not cheat in this test.
+                  Start your quiz assigned by the company. Complete your quiz under 1
+                  hour time. you will have 20 multiple choice questions.
+                </p>
+                <button class="start-quiz-btn" onclick="startQuiz()">
+                  Start Now
+                </button>
+              {% else %}
+                <p>{{ message }}</p>
+              {% endif %} 
+          {% else %}
+             <p>Complete your details first.</p>
+          {% endif %}
+                
 
-          <button class="start-quiz-btn" onclick="startQuiz()">
-            Start Now
-          </button>
         </div>
       </div>
     </div>

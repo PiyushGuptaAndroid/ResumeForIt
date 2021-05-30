@@ -1,5 +1,7 @@
 from django.urls import path
 from studentPortal import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('startquiz', views.startquiz, name='index'),
@@ -11,4 +13,4 @@ urlpatterns = [
     path('studentAnalysis', views.studentAnalysis, name='index'),
     path('gettingResult', views.gettingResult, name='index'),
     path('uploadResume', views.uploadResume, name='index'),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
