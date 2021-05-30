@@ -45,7 +45,8 @@ def endquiz(request):
 def studentDashboard(request):       
     user = User.objects.get(id= request.user.id)
     attempts = Analysis.objects.filter(user_id = user )
-
+    showQuiz = True
+    message = ""
     if(attempts.count() >= 3):
         showQuiz = False
         message = "No attempts left."
@@ -58,12 +59,21 @@ def studentDashboard(request):
             else:
                 showQuiz = True   
 
+    registered = False
     user_info = User_Profile.objects.filter(user_id = user)
     if(user_info.count() != 0):
         registered = True
     else: 
         registered = False
-    return render(request, 'studentPortal/studentDashboard.html', {'showQuiz': showQuiz, 'message':message, 'registered': registered})
+
+    uploadedResume = True
+    resume_status = Resume.objects.filter(user_id = user)
+    if(resume_status.count() != 0):
+        uploadedResume = True
+    else: 
+        uploadedResume = False
+        
+    return render(request, 'studentPortal/studentDashboard.html', {'showQuiz': showQuiz, 'message':message, 'registered': registered, 'uploadedResume': uploadedResume})
 
 
 def studentRegistration(request):
@@ -122,12 +132,6 @@ def studentRegistration(request):
 
 
 def studentProfile(request):
-    user = User.objects.get(id= request.user.id)
-    # if(User_Profile.objects.filter(user_id = user).exists):
-    #     user_data = User_Profile.objects.get(user_id = request.user.id)    
-    #     return render(request, 'studentPortal/studentProfile.html', {'user_data': user_data})
-    # else:
-    #     return render(request, 'studenPortal/studentProfile')   
     try:
         user_data = User_Profile.objects.get(user_id = request.user.id) 
         return render(request, 'studentPortal/studentProfile.html', {'user_data': user_data})
@@ -156,7 +160,7 @@ def gettingResult(request):
         status = "suspended"
     data = Analysis(user_id = user, date = date, score = points, total = totalPoints, percentage = percentage, status = status, detailed_result = skills_result)
     data.save()
-    return render(request, 'studentPortal/studentDashboard.html')
+    return  HttpResponseRedirect('/studentDashboard')
 
 def uploadResume(request):
     if(request.method == "GET"):
@@ -168,9 +172,9 @@ def uploadResume(request):
             data = Resume.objects.get(user_id = user)
             data.resume = resume
             data.save()
-        else :
+        else:
             data = Resume(user_id = user, resume = resume)
             data.save()
-        return render(request, 'studentPortal/studentDashboard.html')
+        return  HttpResponseRedirect('/studentDashboard')
         
     
