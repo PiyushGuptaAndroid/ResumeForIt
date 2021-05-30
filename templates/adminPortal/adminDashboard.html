@@ -10,9 +10,8 @@
 {% block body_block %}
 
 <div class="container-fluid profile-block">
-  <form class="row "  >
-    
-    <div class="mb-3 col-6">
+ <form class="row "  >
+   <div class="mb-3 col-6">
       <label for="NmaeInput" class="form-label">Username</label>
       <input type = "text" class="form-control" id="NmaeInput" placeholder="Username" name="username"  value = "{{admin_dict.admin_details.username}}" disabled></input>
     </div>
@@ -28,7 +27,22 @@
         disabled
       />
     </div>
-
+    </form>
+<div class="display-cards">
+            <div class="card registered-cards" >
+          <div class="card-body">
+            <h6 class="card-text">No of Registered Students: </h6>
+             <h6 class="card-title"><center>{{ num }}</center></h6>
+          </div>
+        </div>       
+            <div class="card eligible-cards" >
+          <div class="card-body">
+            <h6 class="card-text">No of Eligible Students: </h6>
+             <h6 class="card-title"><center>{{ enum }}</center></h6>
+          </div>
+        </div>       
+      </div>
+ 
 
     <div class= "available-quiz">
       <h5>Quiz Questions Available</h5>
@@ -44,7 +58,6 @@
         {% endfor %}        
       </div>
     </div>
-    </form>
 </div>
 
 

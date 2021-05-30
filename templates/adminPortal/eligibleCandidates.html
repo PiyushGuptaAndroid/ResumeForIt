@@ -7,8 +7,120 @@
     {% endblock %}
 
       {% block body_block %}
+      <div class='candidates_content'>
    <h1>Eligible Candidates</h1>
+  {% for candidate in eligible_candidates %}
+     <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col colu-0">S. No.</div>
+      <div class="col colu-2" id = "username_header">Username</div>
+      <div class="col colu-2" id = "date_header">Date</div>
+      
+        {% for key, values in candidate.detailed_result.items %}
+          <div class="col colu-3">{{key}}</div>
+        {% endfor %}
 
+      <div class="col colu-4">Total Score</div>
+      <div class="col colu-5">Percentage</div>
+    </li>
+
+    <div class="tableRows">
+      <li class="table-row">      
+        <div class="col colu-0" data-label="SNo">
+          {{ forloop.counter }}.        
+        </div>
+        
+        <div class="col colu-2" id = "username" data-label="username">
+          {{candidate.user_id}}
+        </div>
+
+        <div class="col colu-2" id = "date" data-label="Date">
+          {{candidate.date}}
+        </div>
+
+        {% for key, values in candidate.detailed_result.items %}
+                <div class="col colu-3" data-label="Score"> {{values.0}}/{{values.1}}</div>     
+        {% endfor %}
+
+        <div class="col colu-4" data-label="TotalScore">
+          {{candidate.score}}/{{candidate.total}}
+        </div>
+        <div class="col colu-6" data-label="Percentage">
+          {{candidate.percentage}}
+        </div>
+      </li>
+      
+    </div>
+  </ul>
+ {% endfor %}
+ </div>
+{% comment %} <table>
+  <tr>
+    <th>S.No</th>
+    <th>User Name</th>
+    <th>Percentage</th>
+  </tr>
+   {% comment %} {% for object in valid_objects %}
+    <tr>
+    <th><div class="col colu-0" data-label="SNo">
+          {{ forloop.counter }}.        
+        </div></th>
+    <th>{{object.user_id}}</th>
+    <th>{{object.percentage}}</th>
+  </tr>
+     {% endfor %} {% endcomment %}
+        
+{% comment %} </table>  {% endcomment %}
+
+
+
+
+
+     
+     {% comment %} <div class= "analysis-content">
+      <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col colu-0">S. No.</div>
+     <div class="col colu-1">User Name</div>
+  
+    </li>
+
+    <div class="tableRows">
+      <li class="table-row">      
+        <div class="col colu-0" data-label="SNo">
+          {{ forloop.counter }}.        
+        </div>
+        
+     <div class="col colu-1" data-label="UserName">
+          {% for user in valid_users %}
+       <p>{{user}}</p>
+     {% endfor %}
+        </div>
+
+        <div class="col colu-1" data-label="Percentage">
+          {% for per in valid_percentage %}
+            <p>{{per}}</p>
+          {% endfor %}
+        </div>
+
+        {% comment %} <div class="col colu-1" data-label="UserName">
+          {% for email in valid_emails %}
+            <p>{{email}}</p>
+          {% endfor %}
+        </div> {% endcomment %}
+{% comment %} 
+
+      </li>
+      
+    </div>
+  </ul>
+  </div> {% endcomment %} 
+{% comment %} 
+        <div class="col colu-5" data-label="UserName">
+          {% for user in valid_users %}
+       <p>{{user}}</p>
+     {% endfor %}
+        </div> {% endcomment %}
     {% endblock %}
 
  
