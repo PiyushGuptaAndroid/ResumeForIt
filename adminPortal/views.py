@@ -71,7 +71,6 @@ def registerAdmins(request):
     return render(request, 'adminPortal/registerAdmins.html')
 
 def questions(request, tag):
-    ques_dict = []
     ques_dict = Question.objects.filter(tag = tag )
     return render(request, 'adminPortal/questions.html', {'ques_dict' : ques_dict})
 
