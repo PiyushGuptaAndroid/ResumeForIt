@@ -1,10 +1,98 @@
 :root {
-  --baseColor: #002542;
-  --bgcolor1: #ffc3bd;
-  --bgcolor2: #eeeeee;
-  --hoverColor: #4a8abb;
+    --baseColor: #002542;
+    --bgcolor1: #ffc3bd;
+    --bgcolor2: #eeeeee;
+    --hoverColor: #4a8abb;
+  }
+
+.candidates_content{
+  margin-top: 1rem;
+  width: 80vw;
+  overflow-x: scroll;
+  text-align:center;
+}
+h1
+{
+  color:var(--baseColor);
+}
+.responsive-table {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding: 0;
+  width: 100%;
+  padding: 0 1rem
+}
+li {
+border-radius: 3px;
+padding: 0.4rem 0.6rem;
+display: flex;
+justify-content: space-between;
+margin: 1rem;
+font-size: small;
+align-items: center;
+}
+.table-header {
+background-color: var(--bgcolor2);
+font-size: 14px;
+text-transform: uppercase;
+letter-spacing: 0.03em;
+margin-bottom: 0;
 }
 
-h1 {
-  color: var(--hoverColor);
+.table-row {
+background-color: #ffffff;
+box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+}
+/* .colu-1 {
+flex-basis: 20%;
+} */
+.colu-0 {
+ padding: 0 !important;
+}
+.col {
+padding-right: 1rem;
+}
+
+.btn-primary {
+color: var(--baseColor);
+background: linear-gradient(256.01deg, #ffd5d1 20.88%, #8be5ff 100.05%);
+border: none;
+border-radius: 6px;
+}
+.btn-primary:hover {
+color: var(--hoverColor);
+border: 2px solid var(--hoverColor);
+}
+/*
+.colu-2 {
+flex-basis: 35%;
+}
+.colu-3 {
+flex-basis: 15%;
+}
+.colu-5 {
+flex-basis: 15%;
+text-align: center;
+} */
+
+
+
+@media all and (max-width: 767px) {
+.table-header {
+  display: none;
+}
+.tableRows {
+  height: 58vh;
+}
+li {
+  display: block;
+}
+.col {
+  flex-basis: 100%;
+}
+.col {
+  display: flex;
+
+}
+
 }
