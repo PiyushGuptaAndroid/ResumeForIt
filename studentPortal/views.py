@@ -42,14 +42,28 @@ def endquiz(request):
     return render(request, 'studentPortal/quiz/end.html')
 
 
-def studentDashboard(request):
-    # global test
-    # test = uuid.uuid4()
-    # geek_object = MyUUIDModel.objects.create(id=test)
-    # geek_object.save()
-    # print(geek_object)
-    # print("uuid is saved")
-    return render(request, 'studentPortal/studentDashboard.html')
+def studentDashboard(request):       
+    user = User.objects.get(id= request.user.id)
+    attempts = Analysis.objects.filter(user_id = user )
+
+    if(attempts.count() >= 3):
+        showQuiz = False
+        message = "No attempts left."
+    else:
+        for attempt in attempts:
+            if(attempt.status == 'eligible'):
+                showQuiz = False
+                message = "Yay !!! you have cleared this round."
+                break
+            else:
+                showQuiz = True   
+
+    user_info = User_Profile.objects.filter(user_id = user)
+    if(user_info.count() != 0):
+        registered = True
+    else: 
+        registered = False
+    return render(request, 'studentPortal/studentDashboard.html', {'showQuiz': showQuiz, 'message':message, 'registered': registered})
 
 
 def studentRegistration(request):
@@ -71,7 +85,7 @@ def studentRegistration(request):
         specification = request.POST['specification']
         # print(test)
         user = User.objects.get(id= request.user.id)
-        if(User_Profile.objects.filter(user_id = user).exists):
+        if(User_Profile.objects.filter(user_id = user).exists()):
             User_Profile.objects.filter(user_id = user).update(
             user_id= user,
             name=name,
@@ -142,9 +156,6 @@ def gettingResult(request):
         status = "suspended"
     data = Analysis(user_id = user, date = date, score = points, total = totalPoints, percentage = percentage, status = status, detailed_result = skills_result)
     data.save()
-    print(data)
-    print("data is saved")
-    
     return render(request, 'studentPortal/studentDashboard.html')
 
 def uploadResume(request):
@@ -153,6 +164,13 @@ def uploadResume(request):
     if(request.method == "POST"):
         user = User.objects.get(id= request.user.id)
         resume = request.FILES['resume']
-        data = Resume(user_id = user, resume = resume)
-        data.save()
+        if(Resume.objects.filter(user_id = user).exists()):
+            data = Resume.objects.get(user_id = user)
+            data.resume = resume
+            data.save()
+        else :
+            data = Resume(user_id = user, resume = resume)
+            data.save()
         return render(request, 'studentPortal/studentDashboard.html')
+        
+    

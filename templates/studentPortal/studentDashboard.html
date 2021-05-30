@@ -35,6 +35,7 @@
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="flush-headingTwo">
+
         <button
           class="accordion-button collapsed"
           type="button"
@@ -45,6 +46,8 @@
         >
           Upload Resume
         </button>
+      
+  
       </h2>
       <div
         id="flush-collapseTwo"
@@ -53,9 +56,13 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
+        {% if registered %}
           <button class="upload-btn" onclick="upload()">
             Upload
           </button>
+        {% else %}
+          <p>Register yourself first</p> 
+        {% endif %}
         </div>
       </div>
     </div>
@@ -79,17 +86,22 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
-          <p>
-            Start your quiz assigned by the company. Complete your quiz under 1
-            hour time. you will have 20 multiple choice questions and you need
-            to complete your test while webcam on and do not cheat in this test.
-            Start your quiz assigned by the company. Complete your quiz under 1
-            hour time. you will have 20 multiple choice questions.
-          </p>
+          
+          {% if  showQuiz  %}
+            <p>
+              Start your quiz assigned by the company. Complete your quiz under 1
+              hour time. you will have 20 multiple choice questions and you need
+              to complete your test while webcam on and do not cheat in this test.
+              Start your quiz assigned by the company. Complete your quiz under 1
+              hour time. you will have 20 multiple choice questions.
+            </p>
+            <button class="start-quiz-btn" onclick="startQuiz()">
+              Start Now
+            </button>
+          {% else %}
+            <p>{{ message }}</p>
+          {% endif %} 
 
-          <button class="start-quiz-btn" onclick="startQuiz()">
-            Start Now
-          </button>
         </div>
       </div>
     </div>
