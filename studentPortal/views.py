@@ -31,7 +31,7 @@ def startquiz(request):
 
 def quiz(request):
     ques = serializers.serialize(
-        "json", Question.objects.filter(tag__in=filtered_skills).order_by('?')[:4])
+        "json", Question.objects.filter(tag__in=filtered_skills).order_by('?')[:10])
     print()
     questionsJson = dumps(ques)
 
@@ -154,7 +154,7 @@ def gettingResult(request):
     skills_result = request.POST['skills_result']
     # print(skills_result)
     percentage = float(int(points)/int(totalPoints))*100
-    if(percentage >= 80):
+    if(percentage >= 70):
         status = "eligible"
     else:
         status = "suspended"
