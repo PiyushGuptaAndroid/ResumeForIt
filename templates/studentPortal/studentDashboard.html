@@ -115,11 +115,12 @@
           {% if uploadedResume %}
               {% if  showQuiz  %}
                 <p>
-                  Start your quiz assigned by the company. Complete your quiz under 1
-                  hour time. you will have 20 multiple choice questions and you need
-                  to complete your test while webcam on and do not cheat in this test.
-                  Start your quiz assigned by the company. Complete your quiz under 1
-                  hour time. you will have 20 multiple choice questions.
+                  1. Start your quiz assigned by the company.<br> 
+                  2. In this quiz you will have 20 multiple choice questions.<br>
+                  3. Time duration if this quiz will be 30 minutes<br>
+                  4. Each question max score will be 5 points.<br>
+                  5. No negative marking in this quiz.
+                  
                 </p>
                 <button class="start-quiz-btn" onclick="startQuiz()">
                   Start Now
@@ -155,12 +156,9 @@
         data-bs-parent="#accordionFlushExample"
       >
         <div class="accordion-body">
-          Placeholder content for this accordion, which is intended to
-          demonstrate the <code>.accordion-flush</code> class. This is the third
-          item's accordion body. Nothing more exciting happening here in terms
-          of content, but just filling up the space to make it look, at least at
-          first glance, a bit more representative of how this would look in a
-          real-world application.
+            <button class="result-btn" onclick="result()">
+              Detailed Analysis
+           </button>
         </div>
       </div>
     </div>

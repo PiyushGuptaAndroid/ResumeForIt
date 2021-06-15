@@ -22,6 +22,7 @@
 
       <div class="col colu-4">Total Score</div>
       <div class="col colu-5">Percentage</div>
+      <div class="col colu-6">Resume</div>
     </li>
 
     <div class="tableRows">
@@ -48,6 +49,10 @@
         <div class="col colu-6" data-label="Percentage">
           {{candidate.percentage}}
         </div>
+        <div class="col colu-6" id = "resume" data-label="resume">
+        <a href="{{Resumes.0.resume.url}}">Download</a>
+        </div>
+
       </li>
       
     </div>

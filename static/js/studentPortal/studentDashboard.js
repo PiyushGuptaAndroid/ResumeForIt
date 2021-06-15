@@ -7,3 +7,6 @@ function register() {
 function upload() {
     location.href ="uploadResume";
 }
+function result() {
+    location.href ="studentAnalysis";
+}

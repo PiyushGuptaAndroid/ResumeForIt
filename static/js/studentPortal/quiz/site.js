@@ -20,7 +20,6 @@ console.log("hello");
     skills_dict[skills_array[i]][0] = 0;
     skills_dict[skills_array[i]][1] = 0;
   }
-
   show(question_count);
 
 };
@@ -46,6 +45,7 @@ function next() {
     sessionStorage.setItem("points", points);
     console.log(skills_dict);
   }
+  console.log(skills_dict);
   sessionStorage.setItem('skills_result', JSON.stringify(skills_dict));
   console.log(points);
 

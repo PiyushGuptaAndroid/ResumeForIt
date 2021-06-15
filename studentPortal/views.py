@@ -26,6 +26,7 @@ def startquiz(request):
     filtered_resume = ResumeParser(resume_url).get_extracted_data()
     global filtered_skills
     filtered_skills = filtered_resume['skills']
+    print(filtered_skills)
     return render(request, 'studentPortal/quiz/start.html')
 
 

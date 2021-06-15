@@ -67,7 +67,7 @@
 }
 
 .start-quiz-btn,
-.register-btn, .upload-btn {
+.register-btn, .upload-btn, .result-btn {
   width: auot;
   height: 2rem;
   color: var(--baseColor);

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from adminPortal.models import Question
 from login.models import Recruiter
 from django.core import serializers
-from studentPortal.models import Analysis,User_Profile
+from studentPortal.models import Analysis,User_Profile,Resume
 import json
 # Create your views here.
 
@@ -50,13 +50,17 @@ def adminDashboard(request):
 def eligibleCandidates(request):
     objects = Analysis.objects.all()
     eligible_candidates=[]
+    Resumes=[]
     for object in objects:
         if object.status=="eligible":
             eligible_candidates.append(object)
+            Resumes.append(Resume.objects.get(user_id=object.user_id))
+    
     for i in range(0, len(eligible_candidates)):
         eligible_candidates[i].detailed_result = json.loads(eligible_candidates[i].detailed_result)   
     return render(request, 'adminPortal/eligibleCandidates.html',{
        "eligible_candidates":eligible_candidates,
+       "Resumes":Resumes,
     })
 
 
